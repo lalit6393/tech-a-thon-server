@@ -11,6 +11,8 @@ const passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var createRouter = require('./routes/create');
+var scheduleRouter = require('./routes/schedule');
 
 mongoose.connect(config.mongoUrl)
 .then((db) => {
@@ -43,9 +45,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/c', createRouter);
+app.use('/schedule', scheduleRouter);
+
+// app.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

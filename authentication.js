@@ -9,7 +9,7 @@ const config = require('./config')
 
 exports.getToken = (user) => {
     return jwt.sign(user, config['secret-key'],
-    {expiresIn: 3600});
+    {expiresIn: 360000});
 };
 
 var opt = {};
@@ -43,7 +43,7 @@ exports.verifyAdmin = (req, res, next) => {
     else{
         var error = new Error('You are not admin');
         res.status = 403;
-        return next();
+        return next(error);
     }
 };
 

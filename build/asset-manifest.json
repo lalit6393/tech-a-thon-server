@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "./static/css/main.f1a0ecbc.css",
+    "main.js": "./static/js/main.8d211b98.js",
+    "static/js/787.215d4294.chunk.js": "./static/js/787.215d4294.chunk.js",
+    "static/media/PoppinsRegular.ttf": "./static/media/PoppinsRegular.35d26b781dc5fda684cc.ttf",
+    "static/media/Volkhov-Regular.ttf": "./static/media/Volkhov-Regular.50c81e12252988e0e5be.ttf",
+    "static/media/Tabletlogin.svg": "./static/media/Tabletlogin.eb1f26170b63729597c3a7748c5326c8.svg",
+    "index.html": "./index.html",
+    "main.f1a0ecbc.css.map": "./static/css/main.f1a0ecbc.css.map",
+    "main.8d211b98.js.map": "./static/js/main.8d211b98.js.map",
+    "787.215d4294.chunk.js.map": "./static/js/787.215d4294.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1a0ecbc.css",
+    "static/js/main.8d211b98.js"
+  ]
+}

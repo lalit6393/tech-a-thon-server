@@ -4,10 +4,11 @@ const passport = require('passport');
 const authentication = require('../authentication');
 
 var router = express.Router();
+router.use(bodyParser.json());
 
 /* GET users listing. */
-
-router.get('/token', passport.authenticate('google-token', {session: false}), (req, res, next) => {
+router.get('/token', passport.authenticate('google-token', {session: false}), 
+(req, res, next) => {
   if(req.user){
     var token = authentication.getToken({_id: req.user._id});
     console.log("userId: ", req.user._id);
@@ -17,12 +18,23 @@ router.get('/token', passport.authenticate('google-token', {session: false}), (r
   }
 });
 
-router.post('/:userId', function(req, res, next) {
-       
-});
+router.get('/checkJWTtoken', (req, res) => {
+  passport.authenticate('jwt', {session: false}, (err, user, info) => {
+    if (err)
+      return next(err);
+    
+    if (!user) {
+      res.statusCode = 401;
+      res.setHeader('Content-Type', 'application/json');
+      return res.json({status: 'JWT invalid!', success: false, err: info});
+    }
+    else {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      return res.json({status: 'JWT valid!', success: true});
 
-router.get('/:userId/public', function(req, res, next) {
-       
+    }
+  }) (req, res);
 });
 
 module.exports = router;
